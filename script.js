@@ -149,8 +149,8 @@ document.querySelectorAll('.window').forEach(win => {
 function unlockScreen() {
     document.getElementById("wrong-password").style.display = "none";
     
-    let passwordInput = document.getElementById("lock-password").value;
-    let correctPassword = "1234"; // Set your desired password
+    const passwordInput = document.getElementById("lock-password").value;
+    const correctPassword = "1234"; // Set your desired password
 
     if (passwordInput === correctPassword) {
         document.getElementById("lock-password").value = "";
