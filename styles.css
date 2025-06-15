@@ -1,0 +1,360 @@
+:root {
+    --bg-color: white;
+    --taskbar-bg: rgba(200, 200, 200, 0.8);
+    --window-bg: white;
+    --title-bar-bg: #444;
+    --title-text-color: white;
+
+    --folder-name-color: #444;
+    --background-image: url("images/light-mode-wallpaper.gif"); /* Light mode background */
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: white;
+    --taskbar-bg: rgba(50, 50, 50, 0.8);
+    --window-bg: #222;
+    --title-bar-bg: #666;
+    --title-text-color: black;
+
+    --folder-name-color: #dbdbdb;
+    --background-image: url("images/dark-mode-wallpaper.gif"); /* Dark mode background */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--background-image) no-repeat center center/cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Desktop Icons */
+#desktop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.icon {
+    width: 150px;
+    height: fit-content;
+    text-align: center;
+    margin: 30px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 120px;
+    height: 120px;
+}
+.icon:hover{
+    background-color: rgba(207, 238, 251, 0.5);
+    border-radius: 5px;
+}
+
+.icon p{
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: var(--folder-name-color)
+}
+/* Taskbar */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    /*backdrop-filter: blur(10px);*/
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+#start-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    width: 150px;
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 35px;
+}
+
+#start-button:hover {
+    background: url(images/icons/star.png) no-repeat center;
+    background-size: 50%;
+    color: rgb(180, 157, 75);
+
+}
+
+/* Start Menu */
+#start-menu {
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 200px;
+    background: white;
+    display: none;
+}
+
+#start-menu ul {
+    list-style: none;
+}
+
+#start-menu li {
+    padding: 20px 30px;
+    cursor: pointer;
+
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    color: #555;
+}
+
+#start-menu li:hover {
+    background: url(images/icons/star.png) no-repeat right;
+    background-size: cover;
+    background-size: 30%;
+    background-color: #cd9a77;
+    color: white;
+    
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 20px; /* Adjust position in the taskbar */
+    
+    cursor: pointer;
+    width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%; */
+    transition: background 0.3s ease;
+}
+
+.theme-toggle img {
+    width: 100%;
+    height: 100%;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Windows */
+.window {
+    position: absolute;
+    width: 600px;
+    height: 450px;
+    background: white;
+    border: 1px solid black;
+    top: 150px;
+    left: 150px;
+    display: none;
+    z-index: 1;
+    border: none;
+    border-radius: 10px;
+}
+
+.title-bar {
+    height: 40px;
+    background: #444;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: move;
+    
+    border-radius: 10px 10px 0 0;
+}
+.window-title {
+    flex-grow: 1; /* Makes title take up remaining space */
+}
+.title-bar-buttons {
+    display: flex;
+    gap: 5px; /* Adds space between buttons */
+}
+.title-bar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.title-bar button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+.content {
+    height: calc(100% - 40px);
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow: scroll;
+}
+
+/* Photo gallery styling */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.photo:hover {
+    transform: scale(1.1);
+}
+
+/* Full-screen viewer */
+#fullscreen-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#fullscreen-img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#taskbar-icons {
+    display: flex;
+    margin-left: 10px;
+}
+
+.taskbar-item {
+    background: #555;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.taskbar-item:hover {
+    background: #777;
+}
+
+#window2 .content{
+    padding: 40px;
+}
+.work-files{
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 20px;
+    border: 1px solid rgb(231, 231, 231);
+    border-radius: 10px 0 0 10px;
+}
+.project_image{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+.work-content{
+    padding: 20px 0 0 20px;
+    color: #444;
+}
+.work-content a{
+    text-decoration: none;
+    color: rgb(187, 187, 238);
+}
+.work-content a:hover{
+    color: rgb(81, 121, 122);
+}
+.work-content h3:hover{
+    color: rgb(147, 71, 99);
+}
+/* Lock screen */
+
+#lock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above everything */
+    background: url('images/The\ wind\ blows.gif') no-repeat center center/cover;
+}
+
+/* Lock screen content */
+.lock-content {
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Password input */
+#lock-password {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+button {
+    padding: 10px 15px;
+    background: #0078D7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #005bb5;
+}

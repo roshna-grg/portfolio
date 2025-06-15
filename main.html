@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<!-- <div id="lock-screen">
+    <div class="lock-content">
+        <h1>Welcome</h1>
+        <p>Enter Password to Unlock</p>
+        <input type="password" id="lock-password" placeholder="Password">
+        <button onclick="unlockScreen()">Unlock</button>
+        <p id="wrong-password" style="color: red; display: none;">Wrong password, try again!</p>
+    </div>
+</div> -->
+
+<body>
+
+    <!-- Main Page -->
+    <div id="desktop">
+        <div class="icon" onclick="openWindow('window1')">
+            <img src="images/icons/art_icon.png" alt="art_icon">
+            <p>Art Folder</p>
+        </div>
+        <div class="icon" onclick="openWindow('window2')">
+            <img id="work_icon" src="images/icons/work-icon-light.png" alt="work_icon">
+            <p>Work Folder</p>
+        </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div id="taskbar">
+        <div id="start-button" onclick="toggleStartMenu()">Start</div>
+        
+        <div id="taskbar-icons"></div> <!-- Icons of opened window -->
+
+        <div id="theme-toggle" class="theme-toggle">
+            <img id="theme-icon" src="images/icons/light-mode.png" alt="Toggle Theme">
+        </div>
+        
+    </div>
+
+    <!-- Start Menu -->
+    <div id="start-menu">
+        <ul>
+            <li id="sleep-button">Sleep</li>
+        </ul>
+    </div>
+
+    <!-- Windows -->
+    <div id="window1" class="window">
+        <div class="title-bar">
+            <span class="window-title">Art Folder</span>
+            <div class="title-bar-buttons">
+                <button onclick="minimizeWindow('window1')">−</button>
+                <button onclick="closeWindow('window1')">X</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="icon" onclick="openWindow('illustration_window')">
+                <img src="images/icons/folder_icon.png" alt="folder_icon">
+                <p>Illustration</p>
+            </div>
+            <div class="icon" onclick="openWindow('character_window')">
+                <img src="images/icons/folder_icon.png" alt="folder_icon">
+                <p>Characters</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="illustration_window" class="window">
+        <div class="title-bar">
+            <span class="window-title">Illustration</span>
+            <div class="title-bar-buttons">
+                <button onclick="minimizeWindow('illustration_window')">−</button>
+                <button onclick="closeWindow('illustration_window')">X</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="photo-gallery">
+                <img src="images/Illustration/1.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Illustration/2.jpg" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Illustration/3.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Illustration/4.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Illustration/5.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Illustration/6.png" class="photo" onclick="openFullScreen(this)">
+            </div>
+        </div>
+    </div>
+
+    <div id="character_window" class="window">
+        <div class="title-bar">
+            <span class="window-title">Characters</span>
+            <div class="title-bar-buttons">
+                <button onclick="minimizeWindow('character_window')">−</button>
+                <button onclick="closeWindow('character_window')">X</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="photo-gallery">
+                <img src="images/Character/1.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/2.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/3.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/4.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/5.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/6.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/7.jpg" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/8.jpg" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/9.png" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/10.jpg" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/11.jpg" class="photo" onclick="openFullScreen(this)">
+                <img src="images/Character/12.png" class="photo" onclick="openFullScreen(this)">
+            </div>
+        </div>
+    </div>
+
+    <div id="window2" class="window">
+        <div class="title-bar">
+            <span class="window-title">Work Folder</span>
+            <div class="title-bar-buttons">
+                <button onclick="minimizeWindow('window2')">−</button>
+                <button onclick="closeWindow('window2')">X</button>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Pokhara Homes -->
+            <div class="work-files">
+                <div>
+                    <img src="images/Project/pokharahomes.png" class="project_image">
+                </div>
+                <div class="work-content">
+                    <p>0 1 &#8212;</p>
+                    <h1 style="padding-bottom: 5px;">Pokhara Homes</h1>
+                    <h3 style="padding-bottom: 5px;">HTML &#124; CSS</h3>
+                    <a href="https://github.com/roshna-grg/pokharaHome.git" target="_blank">Source code &#187;</a>
+                </div>
+            </div>
+            <!-- Beans Stock -->
+            <div class="work-files">
+                <div>
+                    <img src="images/Project/beans_stock.png" class="project_image">
+                </div>
+                <div class="work-content">
+                    <p>0 2 &#8212;</p>
+                    <h1 style="padding-bottom: 5px;">Beans stock</h1>
+                    <h3 style="padding-bottom: 5px;">JS &#124; ASP.NET &#124; C&#35; &#124; CSS</h3>
+                    <a href="https://github.com/roshna-grg/Beans-Stock-Management.git" target="_blank">Source code &#187;</a>
+                </div>
+            </div>
+            <!-- Good Food -->
+            <div class="work-files">
+                <div>
+                    <img src="images/Project/goodfood.jpeg" class="project_image">
+                </div>
+                <div class="work-content">
+                    <p>0 3 &#8212;</p>
+                    <h1 style="padding-bottom: 5px;">Good Food</h1>
+                    <h3 style="padding-bottom: 5px;">JS &#124; ASP.NET &#124; C&#35; &#124; CSS</h3>
+                    <a href="https://github.com/roshna-grg/GoodFood.git" target="_blank">Source code &#187;</a>
+                </div>
+            </div>
+            <!-- Feedback System -->
+            <div class="work-files">
+                <div>
+                    <img src="images/Project/feedback.jpeg" class="project_image">
+                </div>
+                <div class="work-content">
+                    <p>0 5 &#8212;</p>
+                    <h1 style="padding-bottom: 5px;">Feedback System</h1>
+                    <h3 style="padding-bottom: 5px;">C&#35;</h3>
+                    <a href="https://github.com/roshna-grg/Feedback_System.git" target="_blank">Source code &#187;</a>
+                </div>
+            </div>
+            <!-- Book Shelf -->
+            <div class="work-files">
+                <div>
+                    <img src="images/Project/bookshelf.jpeg" class="project_image">
+                </div>
+                <div class="work-content">
+                    <p>0 5 &#8212;</p>
+                    <h1 style="padding-bottom: 5px;">Book Shelf</h1>
+                    <h3 style="padding-bottom: 5px;"></h3>
+                    <a href="" target="_blank">Source code &#187;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-screen viewer -->
+    <div id="fullscreen-view" onclick="closeFullScreen()">
+        <img id="fullscreen-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
